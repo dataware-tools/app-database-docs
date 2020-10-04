@@ -1,0 +1,74 @@
+{
+  "name": "@dataware-tools/app-template",
+  "version": "0.1.0",
+  "private": true,
+  "repository": "https://github.com/dataware-tools/app-template.git",
+  "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
+    "@craco/craco": "^5.7.0",
+    "@dataware-tools/app-common": "git+ssh://git@github.com/dataware-tools/app-common.git",
+    "@semantic-ui-react/craco-less": "^1.2.1",
+    "@types/superagent": "^4.1.10",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "semantic-ui-less": "^2.4.1",
+    "semantic-ui-react": "^1.3.1",
+    "superagent": "^6.1.0",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "start": "NODE_OPTIONS=\"--max-old-space-size=2048\" craco start",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=2048\" craco build",
+    "test": "NODE_OPTIONS=\"--max-old-space-size=2048\" craco test",
+    "eject": "NODE_OPTIONS=\"--max-old-space-size=2048\" craco eject",
+    "serve": "[[ ! -d build ]] && npm run build; serve build -s -l 3000",
+    "stub-server": "json-server -p 3030 --watch stub_data.json",
+    "storybook": "NODE_OPTIONS=\"--max-old-space-size=2048\" start-storybook -p 9009 -s public",
+    "build-storybook": "NODE_OPTIONS=\"--max-old-space-size=2048\" build-storybook -s public"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.0.22",
+    "@storybook/addon-links": "^6.0.22",
+    "@storybook/addons": "^6.0.22",
+    "@storybook/preset-create-react-app": "^3.1.3",
+    "@storybook/react": "^6.0.22",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^12.12.38",
+    "@types/react": "^16.9.27",
+    "@types/react-dom": "^16.9.7",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.0.4",
+    "serve": "^11.3.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

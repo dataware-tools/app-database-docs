@@ -1,0 +1,51 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@import "./color.variables";
+
+/*-------------------
+       Fonts
+--------------------*/
+
+@fontName          : 'Oxanium';
+
+@headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+@pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+@googleFontName    : @fontName;
+@importGoogleFonts : true;
+@googleFontSizes   : '400,600';
+@googleSubset      : 'latin';
+
+@googleProtocol    : 'https://';
+@googleFontRequest : '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}';
+
+/*-------------------
+  Border Radius
+--------------------*/
+
+/* See Power-user section below
+   for explanation of @px variables
+ */
+@relativeBorderRadius: 0px;
+@absoluteBorderRadius: 0px;
+
+@defaultBorderRadius: @absoluteBorderRadius;
+
+
+/*-------------------
+  Accents
+--------------------*/
+
+/* Differentiating Neutrals */
+@subtleGradient: linear-gradient(transparent, @transparentBlack);
+
+/* Differentiating Layers */
+@subtleShadow:
+  0px 0px 8px 0 @borderColor
+;
+@floatingShadow:
+  0px 2px 4px 0px rgba(34, 36, 38, 0.12),
+    0px 2px 10px 0px rgba(34, 36, 38, 0.15)
+  ;
