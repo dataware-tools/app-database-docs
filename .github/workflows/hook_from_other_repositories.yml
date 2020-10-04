@@ -1,0 +1,38 @@
+name: Build, scan and push docker images
+
+on:
+  repository_dispatch:
+    types: [build-and-deploy]
+
+jobs:
+  docker:
+    runs-on: ubuntu-18.04
+    timeout-minutes: 300
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup ssh-agent
+        uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Build image
+        env:
+          TAG: ${{ github.ref }}
+          REPO: ${{ github.event.repository.name }}
+        shell: bash
+        run: |
+          export DOCKER_BUILDKIT=1
+          docker build -t hdwlab/common-private:dataware-tools-${REPO}-${TAG##*/} --ssh default .
+
+      - name: Push to DockerHub
+        env:
+          TAG: ${{ github.ref }}
+          REPO: ${{ github.event.repository.name }}
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        shell: bash
+        run: |
+          docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} \
+          && docker push hdwlab/common-private:dataware-tools-${REPO}-${TAG##*/}
