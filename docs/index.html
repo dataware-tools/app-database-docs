@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closed Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="Description">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+</head>
+<body>
+<div id="app">Loading ...</div>
+<script>
+    window.$docsify = {
+        noCompileLinks: ['/healthz'],
+        themeColor: "#5e90e3",   // this is the default 'vue' color
+        repo: 'https://github.com/TakedaLab/closed-dataset-docs',
+        // logoLink: '/',
+        auto2top: true,
+        coverpage: true,
+        onlyCover: true,
+        executeScript: true,
+        loadSidebar: true,
+        loadNavbar: true,
+        mergeNavbar: true,
+        maxLevel: 0,
+        subMaxLevel: 0, // FIXME: Change to >0 when the PR (https://github.com/docsifyjs/docsify/issues/1032) is solved
+        name: 'Closed Documents',
+        search: {
+            noData: {
+                '/contents/en/': 'No results!',
+                '/contents/ja/': '見つかりませんでした'
+            },
+            paths: 'auto',
+            placeholder: {
+                '/': 'Search',
+                '/contents/en/': 'Search',
+                '/contents/ja/': '検索',
+            }
+        },
+        relativePath: true,
+        formatUpdated: '{MM}/{DD} {HH}:{mm}',
+        darkMode: {
+            dark: {
+                background: "#1c2022",
+                toggleBtnBg: "#34495e",
+                textColor: "#b4b4b4"
+            },
+            light: {
+                background: "white",
+                toggleBtnBg: "var(--theme-color)",
+            }
+        },
+        tabs: {
+            persist: true,      // default
+            sync: false,      // default
+            theme: 'classic', // default
+            tabComments: true,      // default
+            tabHeadings: true       // default
+        },
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+<script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs/components/prism-markdown.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
+<script src="//unpkg.com/mermaid/dist/mermaid.js"></script>
+<script src="//unpkg.com/docsify-mermaid@latest/dist/docsify-mermaid.js">
+<script>mermaid.initialize({ startOnLoad: true });</script>
+</body>
+</html>

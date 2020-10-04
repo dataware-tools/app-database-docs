@@ -1,40 +1,28 @@
 # syntax=docker/dockerfile:1.0.0-experimental
-FROM node:14.11.0-stretch as BUILD_STAGE
-SHELL ["/bin/bash", "-c"]
-ENV LANG="en_US.UTF-8"
+FROM node:14.11.0-stretch AS build-stage
+SHELL ["bash", "-c"]
 
-# Copy files
-RUN mkdir -p /opt/app
-COPY ./packag*.json /opt/app/
-WORKDIR /opt/app
+COPY ./package.json /opt/package.json
+WORKDIR /opt
+RUN npm install -g argparse@1.0.10
 
-# Install dependency
+COPY ./docs /opt/docs
+COPY ./scripts /opt/scripts
+
+# Get contents and build
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN --mount=type=ssh yarn install --network-concurrency 1
+RUN --mount=type=ssh git clone git@github.com:TakedaLab/closed-database-docs.git -b refactoring /opt/docs/contents
+RUN ./scripts/build.sh
 
-# Copy other files
-COPY ./src /opt/app/src
-COPY ./public /opt/app/public
-COPY ./craco.config.js /opt/app/
-COPY ./tsconfig.json /opt/app/
-
-# Build app
-RUN npm run build
-
+CMD ["bash"]
 
 #
 # Second stage
 #
-FROM node:14.11.0-stretch-slim
+FROM node:14.11.0-stretch
+EXPOSE 3000/tcp
+RUN npm install -g docsify-cli@^4.4.1
 
-# Install server
-RUN npm install -g serve
+COPY --from=build-stage /opt/docs /opt/docs
 
-# Copy files
-RUN mkdir -p /opt/app
-COPY --from=BUILD_STAGE /opt/app/build /opt/app/build
-COPY ./public /opt/app/public
-WORKDIR /opt/app
-
-# Set default command
-CMD ["serve", "build", "-s", "-l", "3000"]
+CMD ["docsify", "serve", "/opt/docs"]

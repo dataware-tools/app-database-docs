@@ -1,12 +1,14 @@
 name: Build, scan and push docker images
 
 on:
-  push:
-    branches:
-      - master
-      - dev
-    tags:
-      - v*
+  - push:
+      branches:
+        - master
+        - dev
+      tags:
+        - v*
+  - repository_dispatch:
+      types: [build-and-deploy]
 
 jobs:
   docker:

@@ -1,11 +1,14 @@
 version: '3'
+
+volumes:
+  contents:
+
 services:
-  app-common:
+  docsify:
     image: app:latest
     ports:
       - 3000:3000
     volumes:
-      - .:/opt/app
-      - /opt/app/node_modules
-    command: npm start
+      - ${PWD}:/opt:rw
+      - contents:/opt/docs/contents
     tty: true
