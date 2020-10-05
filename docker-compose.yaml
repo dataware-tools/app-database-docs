@@ -1,7 +1,7 @@
 version: '3'
-
-volumes:
-  contents:
+#
+#volumes:
+#  contents:
 
 services:
   docsify:
@@ -10,6 +10,9 @@ services:
       - 3000:3000
     volumes:
       - ${PWD}/docs:/opt/docs:rw
-      - contents:/opt/docs/contents
-    command: npx serve /opt/docs -l 3000
+      - ${PWD}/scripts:/opt/scripts:ro
+#      - contents:/opt/docs/contents
+    working_dir: /opt/scripts
+    entrypoint: ./entrypoint.sh
+    command: serve /opt/docs -l 3000
     tty: true
