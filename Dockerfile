@@ -21,8 +21,8 @@ CMD ["bash"]
 #
 FROM node:14.11.0-stretch
 EXPOSE 3000/tcp
-RUN npm install -g docsify-cli@^4.4.1
+RUN npm install -g serve@^11.3.2
 
 COPY --from=build-stage /opt/docs /opt/docs
 
-CMD ["docsify", "serve", "/opt/docs"]
+CMD ["serve", "/opt/docs", "-l", "3000"]

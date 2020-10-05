@@ -11,4 +11,5 @@ services:
     volumes:
       - ${PWD}/docs:/opt/docs:rw
       - contents:/opt/docs/contents
+    command: npx serve /opt/docs -l 3000
     tty: true
