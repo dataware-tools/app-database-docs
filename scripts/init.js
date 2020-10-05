@@ -166,7 +166,7 @@ const createParser = () => {
     let parser = new ArgumentParser({
         version: '0.1.0',
         addHelp: true,
-        description: 'Initializer for closed-dataset-docs.'
+        description: 'Initializer for app-database-docs.'
     });
 
     // Prepare sub-commands
