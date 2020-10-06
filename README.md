@@ -1,7 +1,6 @@
 # app-database-docs
 
 This repository contains an web-app for visualizing documents of our internal databases.
-Please do not make any contents public.
 
 ## How to build?
 ```bash
