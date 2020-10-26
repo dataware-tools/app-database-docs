@@ -11,7 +11,7 @@ COPY ./scripts /opt/scripts
 
 # Get contents and build
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN --mount=type=ssh git clone git@github.com:TakedaLab/closed-database-docs.git -b refactoring /opt/docs/contents
+RUN --mount=type=ssh git clone git@github.com:TakedaLab/closed-database-docs.git /opt/docs/contents
 RUN ./scripts/build.sh
 
 CMD ["bash"]
