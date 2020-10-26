@@ -1,8 +1,6 @@
-name: Build, scan and push docker images
+name: hook github action in dataware-tools/web-deployment
 
-on:
-  repository_dispatch:
-    types: [build-and-deploy]
+on: [push]
 
 jobs:
   hook:
